@@ -1,6 +1,5 @@
 FROM ubuntu:20.04
 
-# Install dependencies
 RUN apt-get update \
     && apt-get install -y \
         gnupg \
@@ -29,14 +28,11 @@ RUN apt-get update \
 RUN mkdir -p /usr/share/elasticsearch/data /usr/share/elasticsearch/logs /usr/share/elasticsearch/config/scripts \
     && chown -R elasticsearch:elasticsearch /usr/share/elasticsearch
 
-# Copy configuration files
 COPY elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
 COPY logging.yml /usr/share/elasticsearch/config/logging.yml
 
-# Expose ports
 EXPOSE 9200 9300
 
-# Change ownership of Elasticsearch data directory
 RUN chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/data
 
 # Switch to the elasticsearch user
