@@ -1,0 +1,6 @@
+cluster.name: my-cluster   # Make sure all nodes use the same cluster name
+node.name: node-1          # Each node should have a unique name
+network.host: 0.0.0.0      # Allow external connections
+discovery.seed_hosts: ["node1-ip:9300", "node2-ip:9300"]  # Replace with actual IP addresses of nodes
+cluster.initial_master_nodes: ["node-1"]   # Initial master node(s) for bootstrap
+
